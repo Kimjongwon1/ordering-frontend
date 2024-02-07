@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="page-header">
-            <h1 class="display-4">LOGIN</h1>
+            <h1 class="display-4" style="margin-top: 20px;">LOGIN</h1>
         </div>
         <!-- submit은 기본적으로 폼제출시 브라우저가 페이지를 새로고침하므로 해당동작을 막기 위해 prevent사용 -->
         <form @submit.prevent="doLogin">
@@ -40,7 +40,7 @@ export default {
             // 2) 200번대 상태값이 아닌 경우
             try{
                 const loginData = {email: this.email, password: this.password,};
-                const response = await axios.post("http://localhost:8084/doLogin", loginData);
+                const response = await axios.post("http://localhost:8081/member/doLogin", loginData);
                 const token = response.data.result.token;
                 
                 if(token){
@@ -49,7 +49,7 @@ export default {
 
                     localStorage.setItem("token", token);
                     localStorage.setItem("role", role);
-                    this.$router.push("/");
+                    window.location.href =  "/";
                 }else{
                     console.log("200 OK, but not token");
                     alert("login failed");

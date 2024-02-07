@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="page-header">
-            <h1 class="display-4">회원 목록</h1>
+            <h1 class="display-4" style="margin-top: 20px;">회원 목록</h1>
         </div>
         <table class="table">
             <thead>
@@ -36,7 +36,7 @@ export default {
         try{
             const token = localStorage.getItem("token");
             const headers = token ? {Authorization : `Bearer ${token}`} : {};
-            const response = await axios.get("http://localhost:8084/members",{headers});
+            const response = await axios.get("http://localhost:8081/member/members",{headers});
             this.memberList = response.data;
         }catch(error){
             console.log(error)

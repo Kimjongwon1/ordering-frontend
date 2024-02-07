@@ -3,7 +3,7 @@
         
     </div>
     <footer class="fixed-bottom text-center p-3">
-        @ 2024.02.06 <a class="text-dark" href="#">dlwhdvy369@naver.com</a>
+        @ 2024.02.06 <a class="text-dark" href="#">amricanoblack@naver.com</a>
     </footer>
 </template>
 
