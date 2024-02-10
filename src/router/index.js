@@ -4,6 +4,7 @@ import LoginComponent from '@/views/LoginComponent.vue';
 //export default인 경우에는 {} 필요없고, 여러개 요소가 있을경우에는 {}필요
 import {memberRoutes} from './memberRouter.js'
 import {orderRoutes} from './orderRouter.js'
+import {itemRoutes} from './itemRouter.js'
 
 
 const routes = [
@@ -21,7 +22,8 @@ const routes = [
         component: LoginComponent,
     },
     ...memberRoutes,
-    ...orderRoutes
+    ...orderRoutes,
+    ...itemRoutes,
     // ...은 스프레드 연산자로 불리고, 주로 배열요소를 다른 배열요소에 합할때 사용
 ];
 

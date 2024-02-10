@@ -1,5 +1,7 @@
 import MemberCreate from '@/views/MemberCreate.vue';
 import MemberList from '@/views/MemberList.vue';
+import MemberOrders from '@/views/MemberOrders';
+import MyPage from '@/views/MyPage';
 
 export const memberRoutes = [
     {
@@ -11,5 +13,16 @@ export const memberRoutes = [
         path: '/member/create',
         name: 'MemberCreate',
         component: MemberCreate,
+    },
+    {
+        path: '/member/:id/orders',
+        name: 'MemberOrders',
+        component: MemberOrders,
+        props : true
+    },
+    {
+        path: '/mypage',
+        name: 'MyPage',
+        component: MyPage,
     },
 ];

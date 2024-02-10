@@ -17,7 +17,8 @@
                     <td>{{member.id}}</td>
                     <td>{{member.name}}</td>
                     <td>{{member.email}}</td>
-                    <td>{{member.orderCount}}</td>
+                    <td>
+                        <a :href="`/member/${member.id}/orders`">{{member.orderCount}}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -36,7 +37,7 @@ export default {
         try{
             const token = localStorage.getItem("token");
             const headers = token ? {Authorization : `Bearer ${token}`} : {};
-            const response = await axios.get("http://localhost:8081/member/members",{headers});
+            const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/members`,{headers});
             this.memberList = response.data;
         }catch(error){
             console.log(error)
