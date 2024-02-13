@@ -8,7 +8,14 @@
     <input type="text" v-model="inputvalue2">
     <!-- @click == onclick -->
     <button @click="showValue">변수 변경사항 확인</button>
-
+    <div>
+        <h2>{{count}}</h2>
+        <button @click="increment">increment</button>
+    </div>
+    <div>
+        <h2>{{doubleCount}}</h2>
+        <button @click="increment">increment</button>
+    </div>
 </template>
 
 <script>
@@ -18,6 +25,7 @@ export default {
             myLang: "python",
             inputvalue1: "python2",
             inputvalue2: "python3",
+            count: 0,
 
         }
     },
@@ -25,7 +33,15 @@ export default {
     created() {
         this.myLang="java";
     },
+    computed:{
+        doubleCount(){
+            return this.count*2;
+        }
+    },
     methods: {
+        increment(){
+            this.count++;
+        },
         showValue(){
             alert(this.inputvalue2);
         }
