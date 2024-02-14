@@ -23,7 +23,7 @@ export default createStore({
     mutations:{
         //addToCart함수는 외부 컴포넌트(또는 action)에서 호출될 예정
         addToCart(state, item){
-            const existItem = state.cartItems.find(i => i.id == item.id);
+            const existItem = state.cartItems.find(i => i.itemId == item.itemId);
             if(existItem){
                 existItem.count += item.count;
             }else{
@@ -32,6 +32,23 @@ export default createStore({
             //totalcount
             state.totalQuantity = parseInt(state.totalQuantity) + item.count;
             updateLocalStorage(state.cartItems, state.totalQuantity)
+            
+        },
+        clearCart(state){
+            state.cartItems = [];
+            state.totalQuantity = 0;
+            updateLocalStorage(state.cartItems,state.totalQuantity);
+        }
+    },
+    // actions를 통해 여러 mutation을 연속적으로 커밋하거나, 비동기작업을 진행,
+    //  일반적으로 component에서 actions의 메소드를 호출하고, actions에서 mutation메소드 호출
+    actions:{
+        // context는 매개변수가 주입, context 매개변수안에 state, commit 등이 존재.
+        addToCart(context,item){
+            context.commit('addToCart',item);
+        },
+        clearCart(context){
+            context.commit('clearCart');
         }
     },
     // getters: 상태를 반환하는 함수들의 집합
